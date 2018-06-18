@@ -30,10 +30,10 @@
         {
             this.TabControl1 = new System.Windows.Forms.TabControl();
             this.tabCustomers = new System.Windows.Forms.TabPage();
-            this.tabMovies = new System.Windows.Forms.TabPage();
-            this.tabRentals = new System.Windows.Forms.TabPage();
             this.DGVCustomers = new System.Windows.Forms.DataGridView();
+            this.tabMovies = new System.Windows.Forms.TabPage();
             this.DGVMovies = new System.Windows.Forms.DataGridView();
+            this.tabRentals = new System.Windows.Forms.TabPage();
             this.DGVRentals = new System.Windows.Forms.DataGridView();
             this.btnAddCustomer = new System.Windows.Forms.Button();
             this.btnAddMovie = new System.Windows.Forms.Button();
@@ -58,14 +58,17 @@
             this.btnIssue = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rdoAllRented = new System.Windows.Forms.RadioButton();
             this.rdoOutRented = new System.Windows.Forms.RadioButton();
+            this.rdoAllRented = new System.Windows.Forms.RadioButton();
+            this.lblRentalID = new System.Windows.Forms.Label();
+            this.lblCustomerID = new System.Windows.Forms.Label();
+            this.lblMovieID = new System.Windows.Forms.Label();
             this.TabControl1.SuspendLayout();
             this.tabCustomers.SuspendLayout();
-            this.tabMovies.SuspendLayout();
-            this.tabRentals.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVCustomers)).BeginInit();
+            this.tabMovies.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVMovies)).BeginInit();
+            this.tabRentals.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVRentals)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -92,27 +95,6 @@
             this.tabCustomers.Text = "Customers";
             this.tabCustomers.UseVisualStyleBackColor = true;
             // 
-            // tabMovies
-            // 
-            this.tabMovies.Controls.Add(this.DGVMovies);
-            this.tabMovies.Location = new System.Drawing.Point(4, 22);
-            this.tabMovies.Name = "tabMovies";
-            this.tabMovies.Padding = new System.Windows.Forms.Padding(3);
-            this.tabMovies.Size = new System.Drawing.Size(786, 237);
-            this.tabMovies.TabIndex = 1;
-            this.tabMovies.Text = "Movies";
-            this.tabMovies.UseVisualStyleBackColor = true;
-            // 
-            // tabRentals
-            // 
-            this.tabRentals.Controls.Add(this.DGVRentals);
-            this.tabRentals.Location = new System.Drawing.Point(4, 22);
-            this.tabRentals.Name = "tabRentals";
-            this.tabRentals.Size = new System.Drawing.Size(786, 267);
-            this.tabRentals.TabIndex = 2;
-            this.tabRentals.Text = "Rentals";
-            this.tabRentals.UseVisualStyleBackColor = true;
-            // 
             // DGVCustomers
             // 
             this.DGVCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -121,6 +103,18 @@
             this.DGVCustomers.Name = "DGVCustomers";
             this.DGVCustomers.Size = new System.Drawing.Size(651, 261);
             this.DGVCustomers.TabIndex = 0;
+            this.DGVCustomers.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVCustomers_CellClick);
+            // 
+            // tabMovies
+            // 
+            this.tabMovies.Controls.Add(this.DGVMovies);
+            this.tabMovies.Location = new System.Drawing.Point(4, 22);
+            this.tabMovies.Name = "tabMovies";
+            this.tabMovies.Padding = new System.Windows.Forms.Padding(3);
+            this.tabMovies.Size = new System.Drawing.Size(657, 267);
+            this.tabMovies.TabIndex = 1;
+            this.tabMovies.Text = "Movies";
+            this.tabMovies.UseVisualStyleBackColor = true;
             // 
             // DGVMovies
             // 
@@ -128,8 +122,19 @@
             this.DGVMovies.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DGVMovies.Location = new System.Drawing.Point(3, 3);
             this.DGVMovies.Name = "DGVMovies";
-            this.DGVMovies.Size = new System.Drawing.Size(780, 231);
+            this.DGVMovies.Size = new System.Drawing.Size(651, 261);
             this.DGVMovies.TabIndex = 1;
+            this.DGVMovies.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVMovies_CellClick);
+            // 
+            // tabRentals
+            // 
+            this.tabRentals.Controls.Add(this.DGVRentals);
+            this.tabRentals.Location = new System.Drawing.Point(4, 22);
+            this.tabRentals.Name = "tabRentals";
+            this.tabRentals.Size = new System.Drawing.Size(657, 267);
+            this.tabRentals.TabIndex = 2;
+            this.tabRentals.Text = "Rentals";
+            this.tabRentals.UseVisualStyleBackColor = true;
             // 
             // DGVRentals
             // 
@@ -137,8 +142,9 @@
             this.DGVRentals.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DGVRentals.Location = new System.Drawing.Point(0, 0);
             this.DGVRentals.Name = "DGVRentals";
-            this.DGVRentals.Size = new System.Drawing.Size(786, 267);
+            this.DGVRentals.Size = new System.Drawing.Size(657, 267);
             this.DGVRentals.TabIndex = 1;
+            this.DGVRentals.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVRentals_CellClick);
             // 
             // btnAddCustomer
             // 
@@ -242,9 +248,9 @@
             this.lbxRating.Items.AddRange(new object[] {
             "G",
             "PG",
+            "PG-13",
             "M",
-            "R16",
-            "R18"});
+            "R"});
             this.lbxRating.Location = new System.Drawing.Point(442, 368);
             this.lbxRating.Name = "lbxRating";
             this.lbxRating.Size = new System.Drawing.Size(52, 69);
@@ -348,17 +354,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Rented Movies";
             // 
-            // rdoAllRented
-            // 
-            this.rdoAllRented.AutoSize = true;
-            this.rdoAllRented.Location = new System.Drawing.Point(7, 14);
-            this.rdoAllRented.Name = "rdoAllRented";
-            this.rdoAllRented.Size = new System.Drawing.Size(74, 17);
-            this.rdoAllRented.TabIndex = 0;
-            this.rdoAllRented.TabStop = true;
-            this.rdoAllRented.Text = "All Rented";
-            this.rdoAllRented.UseVisualStyleBackColor = true;
-            // 
             // rdoOutRented
             // 
             this.rdoOutRented.AutoSize = true;
@@ -370,11 +365,55 @@
             this.rdoOutRented.Text = "Out Rented";
             this.rdoOutRented.UseVisualStyleBackColor = true;
             // 
+            // rdoAllRented
+            // 
+            this.rdoAllRented.AutoSize = true;
+            this.rdoAllRented.Location = new System.Drawing.Point(7, 14);
+            this.rdoAllRented.Name = "rdoAllRented";
+            this.rdoAllRented.Size = new System.Drawing.Size(74, 17);
+            this.rdoAllRented.TabIndex = 0;
+            this.rdoAllRented.TabStop = true;
+            this.rdoAllRented.Text = "All Rented";
+            this.rdoAllRented.UseVisualStyleBackColor = true;
+            // 
+            // lblRentalID
+            // 
+            this.lblRentalID.AutoSize = true;
+            this.lblRentalID.Location = new System.Drawing.Point(294, 419);
+            this.lblRentalID.Name = "lblRentalID";
+            this.lblRentalID.Size = new System.Drawing.Size(13, 13);
+            this.lblRentalID.TabIndex = 26;
+            this.lblRentalID.Text = "0";
+            this.lblRentalID.Visible = false;
+            // 
+            // lblCustomerID
+            // 
+            this.lblCustomerID.AutoSize = true;
+            this.lblCustomerID.Location = new System.Drawing.Point(313, 419);
+            this.lblCustomerID.Name = "lblCustomerID";
+            this.lblCustomerID.Size = new System.Drawing.Size(13, 13);
+            this.lblCustomerID.TabIndex = 27;
+            this.lblCustomerID.Text = "0";
+            this.lblCustomerID.Visible = false;
+            // 
+            // lblMovieID
+            // 
+            this.lblMovieID.AutoSize = true;
+            this.lblMovieID.Location = new System.Drawing.Point(332, 419);
+            this.lblMovieID.Name = "lblMovieID";
+            this.lblMovieID.Size = new System.Drawing.Size(13, 13);
+            this.lblMovieID.TabIndex = 28;
+            this.lblMovieID.Text = "0";
+            this.lblMovieID.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(675, 450);
+            this.Controls.Add(this.lblMovieID);
+            this.Controls.Add(this.lblCustomerID);
+            this.Controls.Add(this.lblRentalID);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.btnIssue);
@@ -403,10 +442,10 @@
             this.Text = "Form1";
             this.TabControl1.ResumeLayout(false);
             this.tabCustomers.ResumeLayout(false);
-            this.tabMovies.ResumeLayout(false);
-            this.tabRentals.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGVCustomers)).EndInit();
+            this.tabMovies.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGVMovies)).EndInit();
+            this.tabRentals.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGVRentals)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -449,6 +488,9 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rdoOutRented;
         private System.Windows.Forms.RadioButton rdoAllRented;
+        private System.Windows.Forms.Label lblRentalID;
+        private System.Windows.Forms.Label lblCustomerID;
+        private System.Windows.Forms.Label lblMovieID;
     }
 }
 

@@ -39,5 +39,37 @@ namespace Assessment2Movies
 
             return dt;
         }
+        public DataTable FillDGVMoviesWithMovies()
+        {
+            //Create a datatable as we only require one??
+            DataTable dt = new DataTable();
+            using (da = new SqlDataAdapter("SELECT * from MovieDGV", Connection))
+            {
+                //Get results of query
+                Connection.Open();
+                //Fill the table from the Database
+                da.Fill(dt);
+                //Close the connection
+                Connection.Close();
+            }
+
+            return dt;
+        }
+        public DataTable FillDGVRentalsWithRentedMovies()
+        {
+            //Create a datatable as we only require one??
+            DataTable dt = new DataTable();
+            using (da = new SqlDataAdapter("SELECT * from RentedDGV", Connection))
+            {
+                //Get results of query
+                Connection.Open();
+                //Fill the table from the Database
+                da.Fill(dt);
+                //Close the connection
+                Connection.Close();
+            }
+
+            return dt;
+        }
     }
 }
