@@ -66,7 +66,7 @@ namespace Assessment2Movies
             {
                 //Pass the datatable to the DataGridView
 
-                DGVRentals.DataSource = myDatabase.FillDGVRentalsWithRentedMovies();
+                DGVRentals.DataSource = myDatabase.FillDGVRentalsWithRentedMovies(rdoOutRented.Checked);
                 DGVRentals.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
             catch (Exception ex)
@@ -128,6 +128,77 @@ namespace Assessment2Movies
             catch
             {
             }
+        }
+
+        private void btnAddCustomer_Click(object sender, EventArgs e)
+        {
+            //Adds a customer to the database (obviously)
+            myDatabase.AddCustomer(txtFirstName.Text, txtLastName.Text, txtAddress.Text, txtPhone.Text);
+            loadDB();
+        }
+
+        private void btnUpdateCustomer_Click(object sender, EventArgs e)
+        {
+            //Changes the details of a selected customer
+            myDatabase.UpdateCustomer(txtFirstName.Text, txtLastName.Text, txtAddress.Text, txtPhone.Text,
+                lblCustomerID.Text);
+            loadDB();
+        }
+
+        private void btnDeleteCustomer_Click(object sender, EventArgs e)
+        {
+            //Deletes the details of the selected customer
+            myDatabase.DeleteCustomer(lblCustomerID.Text);
+            //Clear out the fields to entirely remove the customer data
+            lblCustomerID.Text = "";
+            txtFirstName.Text = "";
+            txtLastName.Text = "";
+            txtAddress.Text = "";
+            txtPhone.Text = "";
+            loadDB();
+
+        }
+
+        private void btnAddMovie_Click(object sender, EventArgs e)
+        {
+            //Adds a movie to the database (obviously)
+            myDatabase.AddMovie(txtTitle.Text, txtYear.Text, lbxRating.SelectedItem.ToString());
+            loadDB();
+        }
+
+        private void btnUpdateMovie_Click(object sender, EventArgs e)
+        {
+            myDatabase.UpdateMovie(txtTitle.Text, txtYear.Text, lbxRating.SelectedItem.ToString(), lblMovieID.Text);
+            loadDB();
+        }
+
+        private void btnDeleteMovie_Click(object sender, EventArgs e)
+        {
+            //Deletes the details of the selected customer
+            myDatabase.DeleteMovie(lblMovieID.Text);
+            //Clear out the fields to entirely remove the movie data
+            lblMovieID.Text = "";
+            txtTitle.Text = "";
+            txtYear.Text = "";
+            lbxRating.SelectedIndex = -1;
+            loadDB();
+        }
+
+        private void rdoOutRented_CheckedChanged(object sender, EventArgs e)
+        {
+            loadDB();
+        }
+
+        private void btnIssue_Click(object sender, EventArgs e)
+        {
+            myDatabase.IssueRental(lblCustomerID.Text, lblMovieID.Text);
+            loadDB();
+        }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            myDatabase.ReturnRental(lblRentalID.Text);
+            loadDB();
         }
     }
 }

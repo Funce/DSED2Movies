@@ -154,6 +154,7 @@
             this.btnAddCustomer.TabIndex = 1;
             this.btnAddCustomer.Text = "Add\r\nCustomer";
             this.btnAddCustomer.UseVisualStyleBackColor = true;
+            this.btnAddCustomer.Click += new System.EventHandler(this.btnAddCustomer_Click);
             // 
             // btnAddMovie
             // 
@@ -163,6 +164,7 @@
             this.btnAddMovie.TabIndex = 2;
             this.btnAddMovie.Text = "Add Movie";
             this.btnAddMovie.UseVisualStyleBackColor = true;
+            this.btnAddMovie.Click += new System.EventHandler(this.btnAddMovie_Click);
             // 
             // btnDeleteMovie
             // 
@@ -172,6 +174,7 @@
             this.btnDeleteMovie.TabIndex = 3;
             this.btnDeleteMovie.Text = "Delete Movie";
             this.btnDeleteMovie.UseVisualStyleBackColor = true;
+            this.btnDeleteMovie.Click += new System.EventHandler(this.btnDeleteMovie_Click);
             // 
             // btnUpdateMovie
             // 
@@ -181,6 +184,7 @@
             this.btnUpdateMovie.TabIndex = 4;
             this.btnUpdateMovie.Text = "Update Movie";
             this.btnUpdateMovie.UseVisualStyleBackColor = true;
+            this.btnUpdateMovie.Click += new System.EventHandler(this.btnUpdateMovie_Click);
             // 
             // txtTitle
             // 
@@ -232,6 +236,7 @@
             this.btnUpdateCustomer.TabIndex = 13;
             this.btnUpdateCustomer.Text = "Update Customer";
             this.btnUpdateCustomer.UseVisualStyleBackColor = true;
+            this.btnUpdateCustomer.Click += new System.EventHandler(this.btnUpdateCustomer_Click);
             // 
             // btnDeleteCustomer
             // 
@@ -241,6 +246,7 @@
             this.btnDeleteCustomer.TabIndex = 14;
             this.btnDeleteCustomer.Text = "Delete Customer";
             this.btnDeleteCustomer.UseVisualStyleBackColor = true;
+            this.btnDeleteCustomer.Click += new System.EventHandler(this.btnDeleteCustomer_Click);
             // 
             // lbxRating
             // 
@@ -329,6 +335,7 @@
             this.btnIssue.TabIndex = 23;
             this.btnIssue.Text = "Issue\r\nMovie";
             this.btnIssue.UseVisualStyleBackColor = true;
+            this.btnIssue.Click += new System.EventHandler(this.btnIssue_Click);
             // 
             // btnReturn
             // 
@@ -340,6 +347,7 @@
             this.btnReturn.TabIndex = 24;
             this.btnReturn.Text = "Return\r\nMovie";
             this.btnReturn.UseVisualStyleBackColor = true;
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
             // groupBox1
             // 
@@ -361,13 +369,14 @@
             this.rdoOutRented.Name = "rdoOutRented";
             this.rdoOutRented.Size = new System.Drawing.Size(80, 17);
             this.rdoOutRented.TabIndex = 1;
-            this.rdoOutRented.TabStop = true;
             this.rdoOutRented.Text = "Out Rented";
             this.rdoOutRented.UseVisualStyleBackColor = true;
+            this.rdoOutRented.CheckedChanged += new System.EventHandler(this.rdoOutRented_CheckedChanged);
             // 
             // rdoAllRented
             // 
             this.rdoAllRented.AutoSize = true;
+            this.rdoAllRented.Checked = true;
             this.rdoAllRented.Location = new System.Drawing.Point(7, 14);
             this.rdoAllRented.Name = "rdoAllRented";
             this.rdoAllRented.Size = new System.Drawing.Size(74, 17);
